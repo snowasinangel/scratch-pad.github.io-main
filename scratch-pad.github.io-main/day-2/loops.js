@@ -70,7 +70,10 @@ console.log(printObjectKeys(object))
  */
 function getObjectValues(object) {
   // YOUR CODE HERE //
+  return Object.values(object)
 }
+
+console.log(getObjectValues(object))
 
 /**
  * Given an input Object, loop over the Object and print its values
@@ -78,14 +81,20 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE HERE //
+  for (let value of Object.values(object))
+  console.log(value)
 }
 
+console.log(printObjectValues(object))
 /**
  * Given an input Object, return the number of key/value pairs stored within that Object.
  */
 function getObjectLength(object) {
   // YOUR CODE HERE //
+  return Object.entries(object).length
 }
+
+console.log(getObjectLength(object))
 
 /**
  * Given an input Object, how might we loop over the Object IN REVERSE and
@@ -93,6 +102,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE HERE //
+  //input object established
+  //loop over the object in reverse
+    //need to convert the object into an array
+    Object.values(object).reverse().forEach(value => {
+      console.log(value)
+    })
+  //print the values in reverse using console.log()
 }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
