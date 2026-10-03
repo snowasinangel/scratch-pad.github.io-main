@@ -23,7 +23,30 @@
  */
 function range(start, end) {
   // YOUR CODE HERE //
+
+    var allIntArray = []
+  
+    //determine if start < end
+      //create for loop counting
+    
+    if (start < end) {
+      for (let i = start; i <= end; i++) {
+        allIntArray.push(i)
+      }
+    }
+    //else start is greater than end
+      //for loop counting down
+    else if (start > end) {
+      for (let i = start; i >= end; i--) {
+        allIntArray.push(i)
+      }
+    }
+  return allIntArray
+
 }
+
+  console.log(range(1, 5))
+  console.log(range(5, 1))
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if (

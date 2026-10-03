@@ -13,13 +13,10 @@
  */
 
 function createGreaterThanFilter(base) {
-  // YOUR CODE HERE
-  return function (value) {
-    return value > base
-  }
-  }
-
-  console.log(createGreaterTHanFilter(100))
+  return function(value) {
+    return value > base;
+  };
+}
 
 /**
  * Given an input base to test against, which could be a String or Number,
@@ -29,7 +26,9 @@ function createGreaterThanFilter(base) {
  */
 
 function createLessThanFilter(base) {
-  // YOUR CODE HERE
+  return function(value) {
+    return value < base;
+  };
 }
 
 /**
@@ -41,10 +40,12 @@ function createLessThanFilter(base) {
  */
 
 function createStartsWithFilter(startsWith) {
-  // YOUR CODE HERE
+  return function(string) {
+    return string.charAt(0).toUpperCase() === startsWith.charAt(0).toUpperCase();
+  };
 }
 
-/**
+/*
  * Given a endsWith character, which will be a single character, return a
  * Function that tests whether a given String ends with the endsWith
  * character.
@@ -53,7 +54,9 @@ function createStartsWithFilter(startsWith) {
  */
 
 function createEndsWithFilter(endsWith) {
-  // YOUR CODE HERE //
+  return function(string) {
+    return string.charAt(string.length - 1).toUpperCase() === endsWith.charAt(endsWith.length - 1).toUpperCase();
+  };
 }
 
 /**
@@ -73,7 +76,13 @@ function createEndsWithFilter(endsWith) {
  *
  */
 function modifyStrings(strings, modify) {
-  // YOUR CODE HERE
+  const result = [];
+
+  for (let i = 0; i < strings.length; i++) {
+    result.push(modify(strings[i]));
+  }
+
+  return result;
 }
 
 /**
@@ -95,7 +104,13 @@ function modifyStrings(strings, modify) {
  */
 
 function allStringsPass(strings, test) {
-  // YOUR CODE HERE //
+  for (let i = 0; i < strings.length; i++) {
+    if (!test(strings[i])) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

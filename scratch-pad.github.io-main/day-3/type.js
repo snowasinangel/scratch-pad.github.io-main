@@ -16,11 +16,16 @@
  */
 function isArray(value) {
   // YOUR CODE HERE //
-  return Array.isArray(value)
+  //given the input value -- value is the current parameter
+  //return true = boolean statement, false should be implied
+  //how can i decipher if a value is an array?
+  //would typeof work? --- i don't think so if it's asking
+  //what method deciphers if a value is an array?
+    //Array.isArray is a method that returns true or false if value is an array or not
+    return Array.isArray(value)
   }
 
-console.log(typeof [])
-console.log(isArray([]))
+
 
 /**
  * Given an input value, return true if the value is an Object intended as a
@@ -38,15 +43,29 @@ console.log(isArray([]))
  */
 function isObject(value) {
   // YOUR CODE HERE //
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    function isArray &&
+  //the input/parameter value is established
+  //return** true if the value is an Object ---
+  //the Object must be intended as a collection
 
-  )
+  //looking for a method that returns true or false boolean
+  //the goal: decipher if a value is an Object
+  //the catch: but NOT null, NOT an array, NOT a date
+  //how do I figure out if something is an instance of the Date object?
+    
+  
+      //return Object.isObject(value) did not work
+
+      //found out about instanceof operator
+
+      //return value instanceof Object did not work
+
+  //console.log(value instanceof Object) did not work
+
+  return Object.prototype.toString.call(value) === '[object Object]'
+
 }
 
-console.log(isObject({}))
+// 
 
 /**
  * Given an input value, return true if is either an Array or an an Object
@@ -56,7 +75,63 @@ console.log(isObject({}))
  */
 function isCollection(value) {
   // YOUR CODE HERE //
+  //input value is established
+  //return true if VALUE is either array OR object intended as a collection
+  //return false if otherwise
+  //similar to isObject
+
+  //i think i need the or operator pipes in my answer '||'
+
+     /*if (typeof value === 'object' || 
+        Object.prototype.toString.call(value) === 
+        '[object Object]') {
+        console.log(true)
+        }
+        DID NOT WORK
+      */ 
+
+      /* if (Array.isArray(value)) {
+        console.log(true)
+       } else if (Object.prototype.toString.call(value) === '[object Object]') {
+        console.log(true)
+       } else {
+        console.log(false)
+       }
+        DID NOT WORK
+      */
+      /* if (Object.prototype.toString.call(value) || Array.isArray(value)) {
+        return true
+    }
+        DID NOT WORK
+      */ 
+
+      /*  return value !== null &&
+          typeof value === 'object' &&
+          typeof value[Symbol.iterator] === 'function'
+        DID NOT WORK
+      */
+
+      //return Object.prototype.toString.call(value) || Array.isArray(value) 
+
+      /* if (Array.isArray(value) || Object.prototype.toString.call(value) === '[object Object]') {
+        return true
+      }
+        DID NOT WORK
+      */
+
+        //if (Array.isArray(value) || (typeof value === 'object' && value !== null && value.constructor === Object)) {
+        //return true;
+
+        if (Array.isArray(value) || Object.prototype.toString.call(value) === '[object Object]') {
+        return true;
+        }
+        return false;
+        //i needed to return false after the if this or that statement returns true
+        //it was not implicit that if not true it would return false
+        //i had to tell the program to do that
 }
+
+
 
 /**
  * Given an input value, return the type of the value as a String
@@ -79,6 +154,37 @@ function isCollection(value) {
  */
 function typeOf(value) {
   // YOUR CODE HERE //
+
+  //return a string
+  //the string should represent the type of the value provided
+
+  //NOT return typeof value === 'string'
+  //NOT return String.prototype.toString(value)
+
+  /* 
+  NOT
+  if (typeof value === 'string') {
+    return String.prototype.toString.call(value)
+  }
+  */
+
+  //return String.prototype.toString.call(value)
+
+  /* NOT
+  
+  if (typeof value === 'string') {
+    return value
+  }
+  */
+
+    if (value === null) return 'null';
+    if (Array.isArray(value)) return 'array';
+    if (value instanceof Date) return 'date'; // Adds support for Dates
+    return typeof value;
+
+    //this code works even though i'm not sure how
+    //i did notice that you need all 3 of these lines for it to work
+
 }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
