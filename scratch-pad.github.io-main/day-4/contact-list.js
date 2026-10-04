@@ -66,51 +66,120 @@ function findContact(array, fullName) {
   //findContact function created
   //take in an array of contact objects and fullName
 
-  //return contact object 
+  //return contact object in the array
+  //matches fullname input
   //return contact objects using a for loop
 
   for (let i = 0; i <= array.length - 1; i++) {
   
-
-  //match contact object to fullName input 
-  //matching ===
-
-   if (`${array.firstName} ${array.lastName}` === fullName) {
-      return array[i]
-   }
+   if (fullName === array[i].nameFirst + ' ' + array[i].nameLast) {
+    return array[i]
+   } 
+ }
+  return undefined
   }
   //or return undefined if no matching obj is found
-}
+
+console.log(findContact(contacts, 'Max Gaudin'))
+
+
 
 /**
- * Create a function called `removeContact` that takes in an array of contact objects and a
- * contact object to remove. This function search through the array and remove the contact object
+ * Create a function called `removeContact` that 
+ * takes in an array of contact objects and a
+ * contact object to remove. This function search 
+ * through the array and remove the contact object
  * if found.
  * Use splice method
  */
 function removeContact(array, contact) {
   // YOUR CODE HERE
+  /*for as long as the index is less than the length of the
+    array - 1, iterate through the array
+  */
+  for (let i = 0; i < array.length; i++) {
+
+    /*until you reach the name of the contact object parameter
+      if you reach an index of the array that matches
+      the contact object, splice it
+    */ 
+    if (array[i].id === contact.id) {
+      array.splice(i, 1)
+    }
+  }
+  // and return the new array
+  return array
 }
 
 /**
- * Create a function called `getNamesThatBeginWithLetter` that takes in an array of contact objects.
- * This function should iterate through the array and return a new array of all of the contact
+ * Create a function called `getNamesThatBeginWithLetter` 
+ * that takes in an array of contact objects.
+ * This function should iterate through the 
+ * array and return a new array of all of the contact
  * objects whose first names begin with input letter
  */
 function getNamesThatBeginWithLetter(array, letter) {
   // YOUR CODE HERE
+  //iterate through the array
+  //each index IS a contact object
+
+  //return a new array
+
+  var letterMatch = []
+
+  for (let i = 0; i < array.length; i++) {
+
+    //all the contact objects whose first names
+    //begin with input letter
+  
+    if (array[i].nameFirst[0] === letter) {
+      //push the property of the contact object into the new array
+      letterMatch.push(array[i])
+    }
+    
+}
+return letterMatch
 }
 
 /**
- * Create a function called `getAllContactNames` that takes in an array of contact objects.
- * This function should return a string of each object's full name followed by a linebreak character.
+ * Create a function called `getAllContactNames` 
+ * that takes in an array of contact objects.
+ * This function should return a string of each 
+ * object's full name followed by a linebreak 
+ * character.
  *
  * example:
  *
- *    getAllContactNames(contacts); // => 'Max Gaudin\nJohn Fabroni\nAlon robinson\nMykia Smith\Alice Green'
+ *    getAllContactNames(contacts); // => 
+ *    'Max Gaudin\nJohn Fabroni\nAlon robinson\nMykia 
+ *      Smith\Alice Green'
  */
 function getAllContactNames(array) {
   // YOUR CODE HERE
+//return a string
+//string of each object's full name followed by a linebreak
+
+//return a string
+var result = ``
+
+//starting at zero while you can iterate through 
+// the objects in the array
+for (let i = 0; i < array.length; i++) {
+  const nameFull = array[i].nameFirst + ' ' + array[i].nameLast
+
+  //make variable for the full names
+  //array index nameFirst, space, array index name last, 
+  // ending with the line break character
+
+  //give me back a string with that object's fullname
+  result += nameFull
+
+  if (i < array.length - 1) {
+    result += '\n'
+  }
+}
+return result
+
 }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
